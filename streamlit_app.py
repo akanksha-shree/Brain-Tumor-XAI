@@ -35,9 +35,7 @@ st.set_page_config(
     layout="wide",
 )
 
-# ---------------------------------------------------------------------------
-# Sidebar
-# ---------------------------------------------------------------------------
+
 with st.sidebar:
     st.title("🧠 BrainTumorXAI")
     st.markdown(
@@ -70,9 +68,7 @@ with st.sidebar:
         "⚠️ Educational/portfolio project. Not a medical diagnostic tool."
     )
 
-# ---------------------------------------------------------------------------
-# Main area
-# ---------------------------------------------------------------------------
+
 st.title("Brain Tumor MRI Classification — Explainable AI")
 st.markdown(
     "Upload a brain MRI scan below. The model classifies it into one of "
