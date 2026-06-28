@@ -1,0 +1,7 @@
+# Lightweight requirements for deploying streamlit_app.py to Streamlit
+# Community Cloud. The dashboard is a CLIENT — it calls the FastAPI
+# backend over HTTP and never loads TensorFlow/the model itself, so none
+# of the heavy ML dependencies from requirements.txt are needed here.
+streamlit>=1.33.0
+requests>=2.31.0
+pillow>=10.0.0
