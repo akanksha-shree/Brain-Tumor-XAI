@@ -1,4 +1,4 @@
-# 🧠 BrainTumorXAI
+#  BrainTumorXAI
 
 An Explainable AI (XAI) based Brain Tumor MRI Classification system built using a custom CNN, FastAPI backend, and Streamlit frontend.
 
