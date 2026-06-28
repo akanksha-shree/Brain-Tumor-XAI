@@ -6,7 +6,7 @@ TRAIN_DIR = os.path.join(DATA_DIR, "Training")
 TEST_DIR = os.path.join(DATA_DIR, "Testing")
 
 MODELS_DIR = os.path.join(PROJECT_ROOT, "models")
-MODEL_PATH = os.path.join(MODELS_DIR, "brain_tumor_cnn.keras")
+MODEL_PATH = os.path.join(MODELS_DIR, "Final Model.h5")
 HISTORY_PATH = os.path.join(MODELS_DIR, "training_history.json")
 
 OUTPUTS_DIR = os.path.join(PROJECT_ROOT, "outputs")
@@ -15,10 +15,15 @@ EVAL_REPORT_PATH = os.path.join(OUTPUTS_DIR, "evaluation_report.json")
 CONFUSION_MATRIX_PATH = os.path.join(OUTPUTS_DIR, "confusion_matrix.png")
 TRAINING_CURVES_PATH = os.path.join(OUTPUTS_DIR, "training_curves.png")
 
-CLASS_NAMES = ["glioma", "meningioma", "notumor", "pituitary"]
+CLASS_NAMES = [
+    "glioma",
+    "meningioma",
+    "pituitary",
+    "no_tumor"
+]
 NUM_CLASSES = len(CLASS_NAMES)
 
-IMG_SIZE = 150
+IMG_SIZE = 128
 BATCH_SIZE = 32
 EPOCHS = 60
 LEARNING_RATE = 1e-4
@@ -27,4 +32,4 @@ RANDOM_SEED = 42
 
 # Name of the last Conv2D layer in model.py — used by Grad-CAM.
 # If you change the architecture, update this to match the new last conv layer's name.
-LAST_CONV_LAYER_NAME = "last_conv"
+LAST_CONV_LAYER_NAME = "conv2d_7"
