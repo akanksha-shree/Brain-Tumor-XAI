@@ -8,6 +8,10 @@ The application classifies brain MRI scans into four tumor categories and provid
 
 ---
 
+## 🚀 Live Demo
+
+👉 https://huggingface.co/spaces/akanksha31/brain-tumor-xai
+
 # Features
 
 - Custom CNN trained for Brain MRI classification
