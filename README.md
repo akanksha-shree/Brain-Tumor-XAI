@@ -1,211 +1,168 @@
-#  BrainTumorXAI
+# 🧠 Brain Tumor MRI Classifier with Explainable AI (Grad-CAM)
 
-An Explainable AI (XAI) based Brain Tumor MRI Classification system built using a custom CNN, FastAPI backend, and Streamlit frontend.
+An Explainable AI (XAI) based Brain Tumor MRI Classification system built using a custom Convolutional Neural Network (CNN). The application classifies brain MRI scans into four categories and provides visual explanations using **Grad-CAM**, allowing users to understand which regions of the MRI influenced the model's prediction.
 
-The application classifies brain MRI scans into four tumor categories and provides visual explanations using **Grad-CAM**, allowing users to understand which regions of the MRI influenced the model's prediction.
-
-> **Educational Project:** This project is intended for research, learning, and portfolio purposes only. It is **not** a medical diagnostic tool.
+> **Educational Project:** This project is intended for learning, research, and portfolio purposes only. It is **not** a medical diagnostic tool.
 
 ---
 
-## 🚀 Live Demo
+# 🚀 Live Demo
 
-👉 https://huggingface.co/spaces/akanksha31/brain-tumor-xai
+**Try the application online:**
 
-# Features
-
-- Custom CNN trained for Brain MRI classification
-- FastAPI backend for inference
-- Streamlit interactive web interface
-- Grad-CAM visual explanations
-- Confidence score for predictions
-- REST API
-- Modular project structure
-- Ready for local deployment and cloud deployment
+👉 **https://huggingface.co/spaces/akanksha31/brain-tumor-xai**
 
 ---
 
-# Classes
+# ✨ Features
 
-The model predicts one of the following classes:
-
-- Glioma
-- Meningioma
-- Pituitary Tumor
-- No Tumor
+* Brain MRI classification using a custom CNN
+* Explainable AI with Grad-CAM heatmaps
+* Interactive Gradio web application
+* Confidence score and class probabilities
+* Automatic model download from Hugging Face Hub
+* TensorFlow/Keras implementation
+* Modular and well-structured codebase
+* Ready for local use and cloud deployment
 
 ---
 
-# Project Structure
+# 🧠 Predicted Classes
 
-```
+The model classifies MRI scans into one of the following categories:
+
+* Glioma
+* Meningioma
+* Pituitary Tumor
+* No Tumor
+
+---
+
+# 📂 Project Structure
+
+```text
 BrainTumorXAI/
 │
 ├── api.py
 ├── app.py
 ├── config.py
 ├── gradcam.py
+├── model.py
+├── train.py
+├── evaluate.py
+├── streamlit_app.py
 ├── requirements.txt
 ├── README.md
 │
 ├── models/
-│   └── Final Model.h5
-├── images/
-│   └── Results
-│
 ├── outputs/
-│
 ├── data/
-│   ├── Training/
-│   └── Testing/
-│
-└── assets/
+└── images/
 ```
 
 ---
 
-# Model
+# 🏗 Model
 
-- Architecture: Custom CNN
-- Framework: TensorFlow / Keras
-- Input Size:
-
-```
-128 × 128 × 3
-```
-
-Classes:
-
-```
-Glioma
-Meningioma
-Pituitary
-No Tumor
-```
+* **Architecture:** Custom CNN
+* **Framework:** TensorFlow / Keras
+* **Input Size:** 128 × 128 × 3
+* **Output Classes:** 4
 
 ---
 
-# Explainability
+# 🔍 Explainable AI
 
-The project uses **Grad-CAM (Gradient-weighted Class Activation Mapping)** to visualize the regions of the MRI image that most influenced the model's prediction.
+The project uses **Gradient-weighted Class Activation Mapping (Grad-CAM)** to highlight the image regions that most influenced the model's prediction.
 
-The output includes:
+Each prediction includes:
 
-- Predicted class
-- Confidence score
-- Probability distribution
-- Grad-CAM heatmap
-- Heatmap overlay on the MRI image
+* Predicted class
+* Confidence score
+* Probability distribution
+* Grad-CAM heatmap
+* Heatmap overlay on the original MRI
 
 ---
 
-# Tech Stack
+# 💻 Tech Stack
+
+### Machine Learning
+
+* TensorFlow
+* Keras
+* NumPy
+* OpenCV
+* Pillow
+* Matplotlib
 
 ### Backend
 
-- FastAPI
-- TensorFlow
-- Keras
-- NumPy
-- Pillow
-- OpenCV
+* FastAPI
 
 ### Frontend
 
-- Streamlit
+* Gradio
+* Streamlit (local interface)
 
 ### Explainability
 
-- Grad-CAM
+* Grad-CAM
 
 ---
 
-# Installation
+# 🚀 Running Locally
 
-Clone the repository
+Clone the repository:
 
 ```bash
-git clone https://github.com/akanksha-shree/BrainTumorXAI.git
-
-cd BrainTumorXAI
+git clone https://github.com/akanksha-shree/Brain-Tumor-XAI.git
+cd Brain-Tumor-XAI
 ```
 
-Create virtual environment
-
-### Windows
+Create a virtual environment:
 
 ```bash
 python -m venv venv
+```
 
+Activate it:
+
+**Windows**
+
+```bash
 venv\Scripts\activate
 ```
 
-### Linux / macOS
+**Linux / macOS**
 
 ```bash
-python3 -m venv venv
-
 source venv/bin/activate
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-# Download Model
-
-Place the trained model inside
-
-```
-models/
-```
-
-The file should be
-
-```
-models/
-    Final Model.h5
-```
-
----
-
-# Run Backend
+Run the API:
 
 ```bash
 python api.py
 ```
 
-Server starts at
-
-```
-http://127.0.0.1:8000
-```
-
----
-
-# Run Frontend
-
-In another terminal
+Run the frontend:
 
 ```bash
-streamlit run app.py
-```
-
-Open
-
-```
-http://localhost:8501
+streamlit run streamlit_app.py
 ```
 
 ---
 
-# API Endpoints
+# 🌐 API Endpoints
 
-### Health Check
+## Health Check
 
 ```
 GET /
@@ -217,112 +174,63 @@ or
 GET /health
 ```
 
-Returns
-
-```json
-{
-  "status": "ok",
-  "model_loaded": true,
-  "classes": [
-    "glioma",
-    "meningioma",
-    "pituitary",
-    "no_tumor"
-  ]
-}
-```
-
----
-
-### Predict
+## Prediction
 
 ```
 POST /predict
 ```
 
-Upload
+Supported image formats:
 
-- JPG
-- JPEG
-- PNG
+* JPG
+* JPEG
+* PNG
 
-Returns
+Returns:
 
-```json
-{
-    "predicted_class":"glioma",
-    "confidence":0.97,
-    "probabilities":{},
-    "gradcam_overlay_base64":"..."
-}
-```
+* Predicted class
+* Confidence score
+* Class probabilities
+* Grad-CAM visualization
 
 ---
 
-# Dataset
+# 📊 Workflow
 
-Brain MRI dataset containing four classes:
-
-- Glioma
-- Meningioma
-- Pituitary
-- No Tumor
-
-Dataset is used only for educational and research purposes.
+1. Upload a brain MRI image.
+2. The CNN predicts the tumor category.
+3. Confidence scores are computed.
+4. Grad-CAM generates an attention heatmap.
+5. The heatmap is overlaid on the MRI.
+6. Results are displayed to the user.
 
 ---
 
-# Example Workflow
+# 🔮 Future Improvements
 
-1. Upload MRI image
-
-↓
-
-2. CNN predicts tumor class
-
-↓
-
-3. Confidence score generated
-
-↓
-
-4. Grad-CAM computes activation map
-
-↓
-
-5. Heatmap overlaid on MRI
-
-↓
-
-6. Results displayed in Streamlit
+* SHAP explanations
+* LIME explanations
+* Docker containerization
+* User authentication
+* Prediction history
+* Model versioning
+* Additional CNN architectures
 
 ---
 
-# Future Improvements
+# 📦 Requirements
 
-- SHAP explanations
-- LIME explanations
-- Multi-model comparison
-- Docker support
-- Cloud deployment
-- User authentication
-- Prediction history
-- Model versioning
+* Python 3.10+
+* TensorFlow
+* FastAPI
+* Gradio
+* Streamlit
+* OpenCV
+* Pillow
+* NumPy
+* Matplotlib
 
----
-
-# Requirements
-
-- Python 3.10+
-- TensorFlow
-- FastAPI
-- Streamlit
-- OpenCV
-- Pillow
-- NumPy
-- Matplotlib
-
-Install all dependencies using
+Install all dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -330,7 +238,7 @@ pip install -r requirements.txt
 
 ---
 
-# Disclaimer
+# ⚠️ Disclaimer
 
 This software is intended solely for educational, research, and demonstration purposes.
 
@@ -338,12 +246,12 @@ It must **not** be used as a substitute for professional medical advice, diagnos
 
 ---
 
-# Author
+#  Author
 
 **Akanksha Shree**
 
 ---
 
-# License
+---
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files to deal in the Software without restriction.
+⭐ If you found this project useful, consider giving the repository a star!
